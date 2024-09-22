@@ -2,6 +2,7 @@
 .App{
   background-image: url('https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
   background-attachment: scroll;
+  background-size: cover;
 }
 
 .container {
