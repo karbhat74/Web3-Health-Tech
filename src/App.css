@@ -1,0 +1,123 @@
+/* App.css */
+.App{
+  background-image: url('https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  background-attachment: scroll;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.grid-container{
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 5fr); /* Creates two columns */
+  gap: 10px; /* Space between items */
+  font-family: Arial, sans-serif;
+}
+
+.grid-item{
+  padding: 20px;
+  background-image: url('https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); /* Just for visibility */
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 5px 10px 5px #fff;
+  float: right;
+}
+
+#word{
+  text-align: left;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #e13939;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-image: url('https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  box-shadow: 5px 10px 5px #fff;
+}
+
+.account-info::before{
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #333;
+  content: "\a";
+  white-space: pre;
+}
+
+.owner-info::after {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #333;
+  content: "\a";
+  white-space: pre;
+}
+
+/*.form-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-image: url('https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  box-shadow: 5px 10px 5px #fff;
+}*/
+
+.input-field {
+  display: block;
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.action-button {
+  background-color: #5f635f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.action-button:hover {
+  background-color: #afd15e;
+}
+
+/*.records-section {
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-image: url('https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  box-shadow: 5px 10px 5px #fff;
+}*/
+
+.record-card {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+.record-card p {
+  margin: 5px 0;
+}
+
+.record-card p strong {
+  color: #4CAF50;
+}
