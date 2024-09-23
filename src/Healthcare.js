@@ -192,7 +192,7 @@ const Healthcare = () => {
         }
 
         try {
-            const tx = await contract.addPatientRecord(patientID, "Alice", diagnosis, treatment); // This is a state-changing transaction
+            const tx = await contract.addRecord(patientID, "Alice", diagnosis, treatment); // This is a state-changing transaction
             await tx.wait();
             alert("Record added successfully");
         } catch (error) {
