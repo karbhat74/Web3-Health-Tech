@@ -195,6 +195,10 @@ const Healthcare = () => {
             const tx = await contract.addRecord(patientID, "Alice", diagnosis, treatment); // This is a state-changing transaction
             await tx.wait();
             alert("Record added successfully");
+            await tx.wait();
+            fetchPatientRecords();
+            await tx.wait();
+            alert(`Provider ${providerAddress} authorized successfully`);
         } catch (error) {
             console.error("Error adding record:", error);
             alert("An error occurred while adding the patient record.");
