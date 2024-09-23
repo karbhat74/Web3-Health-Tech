@@ -158,6 +158,16 @@ const Healthcare = () => {
 
 
     const fetchPatientRecords = async () => {
+        if (isOwner) {
+            try {
+                const records = await contract.getPatientRecords(); // Assuming this is a read-only function
+                // Process records
+            } catch (error) {
+                console.error("Error fetching patient records:", error);
+            }
+        } else {
+            alert("Only contract owner can fetch patient records");
+        }
         try {
             const records = await contract.getPatientRecords(patientID);
             console.log(records);
@@ -169,6 +179,25 @@ const Healthcare = () => {
     }
 
     const addRecord = async () => {
+            // Check if the user is the owner
+    if (isOwner) {
+        // Validate recordData (Assuming it's an object and needs specific fields)
+        if (!(patientID, "Alice", diagnosis, treatment) || Object.keys(patientID, "Alice", diagnosis, treatment).length === 0) {
+            alert("Cannot add an empty patient record. Please provide valid data.");
+            return; // Prevent further execution and transaction request
+        }
+
+        try {
+            const tx = await contract.addPatientRecord(patientID, "Alice", diagnosis, treatment); // This is a state-changing transaction
+            await tx.wait();
+            alert("Record added successfully");
+        } catch (error) {
+            console.error("Error adding record:", error);
+            alert("An error occurred while adding the patient record.");
+        }
+    } else {
+        alert("Only contract owner can add patient records");
+    }
         try {
             const tx = await contract.addRecord(patientID, "Alice", diagnosis, treatment);
             await tx.wait();
@@ -184,23 +213,40 @@ const Healthcare = () => {
 
 
     const authorizeProvider = async () => {
-        if (isOwner){
-            try {
-                const tx = await contract.authorizeProvider(providerAddress);
-                await tx.wait();
-                alert(`Provider ${providerAddress} authorized successfully`);
-
-            } catch(error) {
-                console.error("Only contract owner can authorize different providers");
-            }
-        } else {
-            alert("Only contract owner can call this function");
+        // Check if the user is the owner
+    if (isOwner) {
+        // Validate providerAddress
+        if (!providerAddress || providerAddress.trim() === "") {
+            alert("Please provide a valid provider address.");
+            return; // Prevent further execution and transaction request
         }
+
+        try {
+            // Check if the provider is already authorized
+            const isAuthorized = await contract.isProviderAuthorized(providerAddress); // Replace with your actual function to check
+
+            if (isAuthorized) {
+                alert(`Provider ${providerAddress} is already authorized.`);
+                return; // Prevent further execution
+            }
+
+            // Authorize the provider
+            const tx = await contract.authorizeProvider(providerAddress);
+            await tx.wait();
+            alert(`Provider ${providerAddress} authorized successfully`);
+
+        } catch (error) {
+            console.error("Error authorizing provider:", error);
+            alert("An error occurred while authorizing the provider.");
+        }
+    } else {
+        alert("Only contract owner can call this function");
+    }
     }
 
     return(
         <div className='container'>
-            <h1 className = "title">HealthCare Application</h1>
+            <h1 className = "title">MyHealth Hub</h1>
             {account && <p className='account-info'>Connected Account: {account}</p>}
             {isOwner && <p className='owner-info'>You are the contract owner</p>}
 
