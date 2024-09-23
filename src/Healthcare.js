@@ -159,6 +159,10 @@ const Healthcare = () => {
 
     const fetchPatientRecords = async () => {
         if (isOwner) {
+            if (!patientID || patientID.trim() === "") {
+                alert("Please enter a valid Patient ID.");
+                return; // Prevent further execution
+            }
             try {
                 const records = await contract.getPatientRecords(); // Assuming this is a read-only function
                 // Process records
